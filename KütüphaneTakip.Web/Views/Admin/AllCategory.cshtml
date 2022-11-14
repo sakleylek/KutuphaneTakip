@@ -1,0 +1,31 @@
+﻿@using KütüphaneTakip.Core.Entites
+@model List<Category>
+@{
+    ViewData["Title"] = "AllCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Kitaplar</h2>
+<a href="~/Admin/NewCategory" class="link-primary">Kategori Tanımlama</a>
+<br />
+<br />
+<table class="table ">
+    <tr>
+        <th>#</th>
+        <th>Kategori</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.CategoryName</td>
+            <td>
+                <a href="~/Admin/EditCategory/@item.Id" class="link-primary">Edit</a>|<a href="~/Admin/DeleteCategory/@item.Id" class="link-primary">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+

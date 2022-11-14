@@ -1,0 +1,35 @@
+﻿@using KütüphaneTakip.Core.Entites
+@model List<Book>
+@{
+    ViewData["Title"] = "AllBooks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Kitaplar</h2>
+<a href="~/Admin/NewBook" class="link-primary">Kitap Tanımlama</a>
+<br />
+<br />
+<table class="table ">
+    <tr>
+        <th>#</th>
+        <th>İsim</th>
+        <th>Kategori</th>
+        <th>Yazar</th>
+        <th>Eklenme Tarihi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.Category?.CategoryName</td>
+            <td>@item.Author?.AuthorName</td>
+            <td>@item.CDate.ToString("dd.MM.yyyy")</td>
+            <td>
+                <a href="~/Admin/EditDepartment/@item.Id" class="link-primary">Edit</a>|<a href="~/Admin/DeleteDepartment/@item.Id" class="link-primary">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
