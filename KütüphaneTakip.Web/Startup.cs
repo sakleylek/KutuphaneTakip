@@ -1,6 +1,7 @@
 using KütüphaneTakip.Business.Services;
 using KütüphaneTakip.Core.Repository;
 using KütüphaneTakip.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,10 +31,20 @@ namespace KütüphaneTakip.Web
             services.AddControllersWithViews();
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped(typeof(AdminService));
+            services.AddScoped(typeof(UserService));
             services.AddDbContext<AppDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+            {
+                x.LoginPath = "/Login/Index";
+                x.AccessDeniedPath = "/Login/Index";
+                x.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+            });
             services.AddMvc();
+        
+        
+            
 
         }
 
@@ -54,14 +65,14 @@ namespace KütüphaneTakip.Web
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }

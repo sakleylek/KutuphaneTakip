@@ -1,0 +1,53 @@
+﻿@model KütüphaneTakip.Core.Entites.User
+
+@{
+	ViewData["Title"] = "EditUser";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Güncelle</h2>
+<br />
+
+@using (Html.BeginForm("UpdateUser", "Admin", FormMethod.Post))
+{
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-6 col-lg-5">
+				<div class="login-wrap p-4 p-md-5">
+					<form method="post">
+						<div class="d-none">
+							@Html.LabelFor(m => m.Id)
+							@Html.TextBoxFor(m => m.Id)
+						</div>
+						<div class="d-none">
+							@Html.LabelFor(m => m.CDate)
+							@Html.TextBoxFor(m => m.CDate)
+						</div>
+						<div class="form-group ">
+							@Html.Label("Kullanıcı")
+							@Html.TextBoxFor(m =>m.FullName, new { @class="form-control" })
+						</div>
+							<div class="form-group ">
+							@Html.Label("Şifre")
+							@Html.TextBoxFor(m =>m.Password, new { @class="form-control" })
+						</div>
+						<div class="form-group ">
+							@Html.Label("Mail")
+							@Html.TextBoxFor(m =>m.Email, new { @class="form-control" })
+						</div>
+						<div class="form-group ">
+						<fieldset>
+							
+							<label>Yazar</label>
+							@Html.DropDownListFor(x => x.UserRole, (IEnumerable<SelectListItem>) ViewBag.Roles, new { @class="form-control" })
+						</fieldset>
+					</div>
+						<div class="row justify-content-center">
+							<button type="submit" class="btn btn-primary submit mb-4 mr-4 justify-content-center">Kaydet</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+}

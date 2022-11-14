@@ -37,7 +37,7 @@
                     <a id="Information" class="nav-link">User</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="~/Admin/Quit" role="button">  Çıkış Yap</a>
+                    <a class="nav-link" href="~/Admin/Quit" role="button">Çıkış Yap</a>
                 </li>
             </ul>
         </nav>
@@ -45,7 +45,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a class="brand-link d-flex justify-content-center">
-                <span class="brand-text font-weight-light">İş Takip</span>
+                <span class="brand-text font-weight-light">Kütüphane Takip</span>
             </a>
 
             <!-- Sidebar -->
@@ -56,62 +56,31 @@
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library -->
                         <li class="nav-item has-treeview menu-open">
-                            <a href="~/Admin/Home" class="nav-link ">
+                            <a href="~/User/Index" class="nav-link ">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Ana Sayfa
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-header">ANAHTAR TANIMLAR</li>
+
                         <li class="nav-item">
-                            <a href="~/Admin/Index" class="nav-link ">
+                            <a href="~/User/Books" class="nav-link ">
                                 <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Kullanıcı Tanımlama
+                                    Kitaplar
                                 </p>
                             </a>
-                        </li>
+                        </li> 
                         <li class="nav-item">
-                            <a href="~/Admin/Department" class="nav-link">
-                                <i class="nav-icon far fa-building"></i>
+                            <a href="~/User/BookReservation" class="nav-link ">
+                                <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    Departman Tanımlama
+                                    Rezervasyonlarım
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="~/Admin/WorkPlace" class="nav-link">
-                                <i class="nav-icon fas fa-briefcase"></i>
-                                <p>
-                                    İşYeri Tanımlama
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="~/Admin/WorkPlaceType" class="nav-link">
-                                <i class="nav-icon fas fa-briefcase"></i>
-                                <p>
-                                    İşYeri Tipi Tanımlama
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="~/Admin/Case" class="nav-link">
-                                <i class="nav-icon fas fa-folder-open"></i>
-                                <p>
-                                    Durum Kodu Tanımlama
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="~/Admin/Notification" class="nav-link">
-                                <i class="nav-icon fas fa-bell"></i>
-                                <p>
-                                    Mesaj Metni Tanımlama
-                                </p>
-                            </a>
-                        </li>
+
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
@@ -140,13 +109,13 @@
     <script src="~/template/layout/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE -->
     <script src="~/template/layout/dist/js/adminlte.js"></script>
-@*
+
     <script>
         $(document).ready(function () {
             $('#Information').empty();
             $.ajax({
                 type: 'GET',
-                url: `https://localhost:44358/Admin/GetUser`,
+                url: `https://localhost:5001/Admin/GetUser`,
                 success: function (data) {
                     $('#Information').append(`${data}`)
 
@@ -154,7 +123,7 @@
             });
 
         });
-    </script>*@
+    </script>
 
     <!-- OPTIONAL SCRIPTS -->
     <script src="~/template/layout/plugins/chart.js/Chart.min.js"></script>

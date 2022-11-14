@@ -1,9 +1,11 @@
 ﻿@using KütüphaneTakip.Core.Entites
 @model List<Book>
 @{
-    ViewData["Title"] = "AllBooks";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Books";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
+
+
 
 <br />
 <h2>Kitaplar</h2>
@@ -17,6 +19,8 @@
         <th>Kategori</th>
         <th>Yazar</th>
         <th>Eklenme Tarihi</th>
+        <th>Statu</th>
+
     </tr>
     @foreach (var item in Model)
     {
@@ -26,10 +30,16 @@
             <td>@item.Category?.CategoryName</td>
             <td>@item.Author?.AuthorName</td>
             <td>@item.CDate.ToString("dd.MM.yyyy")</td>
-            <td>
-                <a href="~/Admin/EditBook/@item.Id" class="link-primary">Edit</a>|<a href="~/Admin/DeleteBook/@item.Id" class="link-primary">Delete</a>
-            </td>
+            <td>@item.BookStatu</td>
+            @if (item.BookStatu == BookStatu.Boşta)
+            {
+                <td>
+                    <a href="~/User/BookReservation/@item.Id" class="link-primary">Rezerve</a>
+                </td>
+            }
+
+
+
         </tr>
     }
 </table>
-

@@ -1,0 +1,33 @@
+﻿@using KütüphaneTakip.Core.Entites
+@model List<Reservation>
+@{
+    ViewData["Title"] = "AllReservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Rezervasyonlar</h2>
+<a href="~/Admin/NewReservation" class="link-primary">Rezervasyon</a>
+<br />
+<br />
+<table class="table ">
+    <tr>
+        <th>#</th>
+        <th>Kitap</th>
+        
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.BookId</td>            
+            
+            <td>
+                <a href="~/Admin/EditReservation/@item.Id" class="link-primary">Edit</a>|<a href="~/Admin/DeleteReservation/@item.Id" class="link-primary">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+

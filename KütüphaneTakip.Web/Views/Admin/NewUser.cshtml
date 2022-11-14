@@ -1,0 +1,42 @@
+﻿@using KütüphaneTakip.Core.Entites
+@model User
+@{
+	ViewData["Title"] = "NewUser";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Yeni Kullanıcı</h2>
+
+<div class="container">
+	<div class="row justify-content-center">
+		<div class="col-md-6 col-lg-5">
+			<div class="login-wrap p-4 p-md-5">
+				<form method="post">
+					<div class="form-group ">
+						<label for="InputName">İsim</label>
+						<input type="text" name="FullName" class="form-control" id="InputName" placeholder="İsim Giriniz" required="">
+					</div>
+					<div class="form-group ">
+						<label for="InputPassword">Şifre</label>
+						<input name="Password" type="password" class="form-control" id="InputPassword" placeholder="Şifre Giriniz" required=""/>
+					</div>
+					<div class="form-group ">
+						<label for="InputEmail">Email</label>
+						<input name="EMail" type="email" class="form-control" id="InputEmail" placeholder="Email Giriniz" required=""/>
+					</div>
+					
+					<div class="form-group ">
+						<fieldset>
+							<label>Kullanıcı Tipi</label>
+							@Html.DropDownListFor(x => x.UserRole, (IEnumerable<SelectListItem>) ViewBag.Roles, new { @class="form-control" })
+						</fieldset>
+					</div>
+					
+					<div class="row justify-content-center">
+						<button type="submit" class="btn btn-primary submit mb-4 mr-4 justify-content-center">Kaydet</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

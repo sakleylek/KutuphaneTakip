@@ -1,0 +1,37 @@
+﻿@using KütüphaneTakip.Core.Entites
+@model List<User>
+@{
+    ViewData["Title"] = "AllUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h2>Kullanıcılar</h2>
+<a href="~/Admin/NewUser" class="link-primary">Kullanıcı Tanımlama</a>
+<br />
+<br />
+<table class="table ">
+    <tr>
+        <th>#</th>
+        <th>Kullanıcı</th>
+        <th>Eklenme Tarihi</th>
+        <th>Kullanıcı Rolü</th>
+        <th>Şifre</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.FullName</td>
+            <td>@item.CDate</td>
+            <td>@item.UserRole</td>
+            <td>@item.Password</td>
+            <td>
+                <a href="~/Admin/EditUser/@item.Id" class="link-primary">Edit</a>|<a href="~/Admin/DeleteUser/@item.Id" class="link-primary">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+

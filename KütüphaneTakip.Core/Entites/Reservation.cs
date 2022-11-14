@@ -14,6 +14,16 @@ namespace KütüphaneTakip.Core.Entites
         public DateTime StartDate { get; set; }
         public DateTime FinishDate { get; set; }
         public User User { get; set; }
+        public ReservationStatu? ReservationStatu { get; set; }
+
 
     }
+    public enum ReservationStatu
+    {
+        TalepEdildi=0,
+        Onaylandı=1,
+        Red=2,
+        
+    }
+
 }

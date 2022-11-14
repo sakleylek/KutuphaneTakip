@@ -17,6 +17,14 @@ namespace KütüphaneTakip.Core.Entites
         public string Description { get; set; }
         public Category Category { get; set; }
         public Author Author { get; set; }
-        
+        public BookStatu BookStatu { get; set; }
+
     }
+    public enum BookStatu
+    {
+        TalepEdildi = 0,
+        Rezerve= 1,        
+        Boşta = 3
+    }
+
 }
